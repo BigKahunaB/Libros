@@ -26,14 +26,15 @@ try:
     #Consulta la base de datos
 
  # Crear la tabla
-    cur.execute('CREATE TABLE productos ( \
-    id SERIAL PRIMARY KEY, \
-    nombre VARCHAR(100) NOT NULL, \
-    precio NUMERIC(10,2) \
-    );')
+    drop_table_query = """
+    DROP TABLE IF EXISTS productos;
+"""
+
+# Ejecutar la consulta
+    cur.execute(drop_table_query)
     
     conn.commit()  # Confirmar los cambios
-    print("Tabla 'productos' creada exitosamente.")
+    print("Tabla 'productos' borrada.")
 
 # Cerrar el cursor y la conexión
     cur.close()
